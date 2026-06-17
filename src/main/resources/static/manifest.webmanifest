@@ -1,0 +1,19 @@
+{
+  "name": "TaskPay",
+  "short_name": "TaskPay",
+  "description": "Ứng dụng quản lý công việc và theo dõi lương dùng Spring Boot backend.",
+  "lang": "vi",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5fbf8",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
