@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 # 📋 TaskPay
 
@@ -10,9 +10,7 @@
 [![PWA](https://img.shields.io/badge/PWA-Enabled-purple?style=for-the-badge&logo=pwa)](https://web.dev/progressive-web-apps/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-*Không đăng nhập • Không cloud • Không analytics — Dữ liệu hoàn toàn local*
-
-[🚀 Bắt đầu](#-bắt-đầu-nhanh) • [✨ Tính năng](#-tính-năng) • [📦 Cài đặt](#-cài-đặt) • [📡 API](#-api-reference) • [🤝 Đóng góp](#-đóng-góp)
+*Không đăng nhập · Không cloud · Không analytics — Dữ liệu hoàn toàn local*
 
 </div>
 
@@ -21,6 +19,7 @@
 ## ✨ Tính năng
 
 ### 📝 Quản lý công việc (Todo)
+
 | Tính năng | Chi tiết |
 |-----------|----------|
 | CRUD đầy đủ | Thêm, sửa, xóa, hoàn thành task |
@@ -29,6 +28,7 @@
 | Calendar view | Xem task theo ngày trong tháng |
 
 ### 💰 Theo dõi lương (Salary Tracker)
+
 | Tính năng | Chi tiết |
 |-----------|----------|
 | Chấm công | Theo dõi theo tháng: giờ làm, tăng ca, thưởng, nghỉ có/không lương |
@@ -36,6 +36,7 @@
 | Báo cáo | Tổng kết tháng, so sánh các tháng, copy summary nhanh |
 
 ### ⚙️ Hệ thống
+
 | Tính năng | Chi tiết |
 |-----------|----------|
 | Đa ngôn ngữ | Tiếng Việt / English |
@@ -48,21 +49,19 @@
 
 ## 🛠️ Tech Stack
 
-```
-Backend:
-  ├── Java 21
-  ├── Spring Boot 3.3.5
-  ├── Spring Web (REST API)
-  ├── Spring Data JPA
-  ├── Bean Validation (JSR-380)
-  └── H2 Database (file-based, local)
+**Backend**
+- Java 21
+- Spring Boot 3.3.5
+- Spring Web (REST API)
+- Spring Data JPA
+- Bean Validation (JSR-380)
+- H2 Database (file-based, local)
 
-Frontend (bundled trong Spring Boot):
-  ├── Vanilla HTML5 / CSS3 / JavaScript
-  ├── Progressive Web App (PWA)
-  ├── Service Worker (offline support)
-  └── Web App Manifest
-```
+**Frontend** (bundled trong Spring Boot)
+- Vanilla HTML5 / CSS3 / JavaScript
+- Progressive Web App (PWA)
+- Service Worker (offline support)
+- Web App Manifest
 
 ---
 
@@ -99,23 +98,20 @@ taskpay/
 
 ---
 
-## 📦 Cài đặt
+## 📦 Yêu cầu môi trường
 
-### Yêu cầu
+- **JDK 21** trở lên — [Download OpenJDK 21](https://adoptium.net/)
+- **Gradle** không bắt buộc — repo đã có Gradle Wrapper sẵn
 
-- **JDK 21** trở lên ([Download OpenJDK 21](https://adoptium.net/))
-- Gradle **không bắt buộc** — repo đã bao gồm Gradle Wrapper
-
-Kiểm tra Java đã cài:
+Kiểm tra Java:
 
 ```bash
 java -version
-# java version "21.x.x" ...
 ```
 
 ---
 
-## 🚀 Bắt đầu nhanh
+## 🚀 Chạy local
 
 ### 1. Clone dự án
 
@@ -140,15 +136,13 @@ gradlew.bat bootRun
 
 | URL | Mô tả |
 |-----|-------|
-| `http://localhost:8080` | 🏠 Giao diện chính |
-| `http://localhost:8080/api/health` | ❤️ Health check |
-| `http://localhost:8080/h2-console` | 🗄️ H2 Database console |
+| `http://localhost:8080` | Giao diện chính |
+| `http://localhost:8080/api/health` | Health check |
+| `http://localhost:8080/h2-console` | H2 Database console |
 
 ---
 
-## 🔧 Build & Deploy
-
-### Build JAR
+## 🔧 Build
 
 **Windows:**
 ```cmd
@@ -162,20 +156,12 @@ gradlew.bat clean build
 
 Output: `build/libs/taskpay-1.0.0.jar`
 
-### Chạy từ JAR
-
+**Chạy từ JAR:**
 ```bash
 java -jar build/libs/taskpay-1.0.0.jar
 ```
 
-### Biến môi trường
-
-| Biến | Mặc định | Mô tả |
-|------|----------|-------|
-| `SERVER_PORT` | `8080` | Port ứng dụng |
-| `TASKPAY_CORS_ORIGINS` | `http://localhost:8080` | Allowed CORS origins |
-
-**Ví dụ chạy với port khác:**
+**Đổi port:**
 ```bash
 java -jar build/libs/taskpay-1.0.0.jar --server.port=9090
 ```
@@ -184,11 +170,9 @@ java -jar build/libs/taskpay-1.0.0.jar --server.port=9090
 
 ## 🗄️ Database
 
-TaskPay dùng **H2 file database** — dữ liệu lưu cục bộ, không cần cài server database riêng.
+TaskPay dùng **H2 file database** — dữ liệu lưu cục bộ, không cần server database riêng.
 
-### Kết nối H2 Console
-
-Truy cập `http://localhost:8080/h2-console` với thông tin:
+**Kết nối H2 Console** tại `http://localhost:8080/h2-console`:
 
 ```
 JDBC URL : jdbc:h2:file:./data/taskpay-db;DB_CLOSE_ON_EXIT=FALSE
@@ -196,29 +180,7 @@ User     : sa
 Password : (để trống)
 ```
 
-### Đổi vị trí database
-
-Sửa trong `src/main/resources/application.yml`:
-
-```yaml
-spring:
-  datasource:
-    url: jdbc:h2:file:/path/to/your/database;DB_CLOSE_ON_EXIT=FALSE
-```
-
-### Reset dữ liệu
-
-Dừng app, xóa thư mục `data/`, chạy lại:
-```bash
-# Windows
-rd /s /q data
-gradlew.bat bootRun
-
-# macOS/Linux
-rm -rf data/
-./gradlew bootRun
-```
-App sẽ tự tạo lại database và seed dữ liệu mặc định.
+**Reset dữ liệu:** Dừng app, xóa thư mục `data/`, chạy lại — app sẽ tự seed lại dữ liệu mặc định.
 
 ---
 
@@ -227,105 +189,50 @@ App sẽ tự tạo lại database và seed dữ liệu mặc định.
 Base URL: `http://localhost:8080`
 
 ### Health
-
-```http
+```
 GET /api/health
 ```
 
----
-
 ### Tasks
-
-```http
-GET    /api/tasks                          # Lấy tất cả task
-GET    /api/tasks?filter=today             # Lọc: today | upcoming | overdue | completed | priority
-POST   /api/tasks                          # Tạo task mới
-PUT    /api/tasks/{id}                     # Cập nhật task
-PATCH  /api/tasks/{id}/toggle              # Toggle hoàn thành
-DELETE /api/tasks/{id}                     # Xóa task
-DELETE /api/tasks/completed?months=6       # Xóa task đã xong cũ hơn N tháng
 ```
-
-**POST /api/tasks — Request Body:**
-```json
-{
-  "title": "Tên công việc",
-  "note": "Ghi chú...",
-  "dueDate": "2026-06-20",
-  "dueTime": "09:00",
-  "priority": "HIGH",
-  "categoryId": 1,
-  "color": "#FF5733",
-  "repeat": "NONE"
-}
+GET    /api/tasks
+GET    /api/tasks?filter=today|upcoming|overdue|completed|priority
+POST   /api/tasks
+PUT    /api/tasks/{id}
+PATCH  /api/tasks/{id}/toggle
+DELETE /api/tasks/{id}
+DELETE /api/tasks/completed?months=6
 ```
-
----
 
 ### Categories
-
-```http
-GET  /api/categories         # Lấy danh mục
-POST /api/categories         # Tạo danh mục mới
 ```
-
----
+GET  /api/categories
+POST /api/categories
+```
 
 ### Settings
-
-```http
-GET /api/settings/app        # Lấy cài đặt ứng dụng
-PUT /api/settings/app        # Cập nhật cài đặt ứng dụng
-
-GET /api/settings/salary     # Lấy cài đặt lương
-PUT /api/settings/salary     # Cập nhật cài đặt lương
+```
+GET /api/settings/app
+PUT /api/settings/app
+GET /api/settings/salary
+PUT /api/settings/salary
 ```
 
----
-
-### Work Days (Chấm công)
-
-```http
-GET    /api/work-days?monthKey=2026-06     # Lấy chấm công tháng
-PUT    /api/work-days/{yyyy-MM-dd}         # Cập nhật ngày làm
-DELETE /api/work-days/{yyyy-MM-dd}         # Xóa bản ghi ngày
+### Work Days
 ```
-
-**PUT /api/work-days/{date} — Request Body:**
-```json
-{
-  "hoursWorked": 8,
-  "overtimeHours": 2,
-  "bonus": 100000,
-  "isPaidLeave": false,
-  "isUnpaidLeave": false,
-  "note": "Ghi chú ngày làm"
-}
+GET    /api/work-days?monthKey=2026-06
+PUT    /api/work-days/{yyyy-MM-dd}
+DELETE /api/work-days/{yyyy-MM-dd}
 ```
-
----
 
 ### Reports
-
-```http
-GET /api/reports/monthly?monthKey=2026-06   # Báo cáo tháng
 ```
-
-**Response:**
-```json
-{
-  "monthKey": "2026-06",
-  "totalWorkDays": 22,
-  "totalHours": 176,
-  "overtimeHours": 10,
-  "totalBonus": 500000,
-  "estimatedSalary": 12500000
-}
+GET /api/reports/monthly?monthKey=2026-06
 ```
 
 ---
 
-## 🧪 Chạy Tests
+## 🧪 Tests
 
 **Windows:**
 ```cmd
@@ -337,58 +244,38 @@ gradlew.bat test
 ./gradlew test
 ```
 
-Kết quả test: `build/reports/tests/test/index.html`
-
 ---
 
 ## 📱 Cài đặt như App (PWA)
 
-TaskPay là Progressive Web App — có thể cài đặt như app native:
-
 **Android (Chrome):**
 1. Mở `http://<server-ip>:8080` trong Chrome
-2. Menu (⋮) → **"Thêm vào Màn hình chính"**
-3. App xuất hiện trên màn hình như ứng dụng thật
+2. Menu → **"Thêm vào Màn hình chính"**
 
 **Desktop (Chrome/Edge):**
 1. Mở app trong trình duyệt
-2. Click icon cài đặt ở thanh địa chỉ
-3. Chọn **"Install TaskPay"**
-
-> **Lưu ý cho mobile:** Đảm bảo điện thoại và máy chủ cùng mạng LAN, hoặc deploy server lên máy chủ công khai.
+2. Click icon cài đặt ở thanh địa chỉ → **"Install TaskPay"**
 
 ---
 
 ## 🤝 Đóng góp
 
-Mọi đóng góp đều được chào đón! Vui lòng:
-
 1. Fork repo này
-2. Tạo branch mới: `git checkout -b feature/ten-tinh-nang`
-3. Commit thay đổi: `git commit -m 'Add: mô tả thay đổi'`
-4. Push lên branch: `git push origin feature/ten-tinh-nang`
+2. Tạo branch: `git checkout -b feature/ten-tinh-nang`
+3. Commit: `git commit -m "Add: mô tả thay đổi"`
+4. Push: `git push origin feature/ten-tinh-nang`
 5. Tạo Pull Request
-
-### Báo lỗi
-
-Nếu gặp bug, hãy [tạo Issue](https://github.com/ilcde/TaskPay/issues) với thông tin:
-- Môi trường (OS, Java version)
-- Các bước tái hiện lỗi
-- Log lỗi (nếu có)
 
 ---
 
 ## 📄 License
 
-MIT License — xem file [LICENSE](LICENSE) để biết thêm chi tiết.
+[MIT License](LICENSE) — Copyright (c) 2026 ilcde
 
 ---
 
 <div align="center">
 
-Made with ❤️ by [ilcde](https://github.com/ilcde)
-
-⭐ Nếu thấy hữu ích, hãy **star** repo này nhé!
+Made with ❤️ — ⭐ Nếu thấy hữu ích, hãy **star** repo này nhé!
 
 </div>
-]]>
